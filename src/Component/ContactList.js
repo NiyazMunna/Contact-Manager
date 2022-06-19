@@ -1,15 +1,13 @@
 import React from "react";
+import ContactCard from "./ContactCard";
 
 function ContactList(props) {
   console.log(props);
- const renderContactList = props.Contacts.map((contact) =>{
-    return <div className="item">
-        <div className="content">
-            <div className="Header">{contact.name}</div>
-            <div>{contact.email}</div>
-        </div>
-    </div>
- })
+  const renderContactList = props.Contacts.map((contact) => {
+    return (
+  <ContactCard contact={contact} />
+    );
+  });
   return <div className="ui celled list">{renderContactList}</div>;
 }
 
