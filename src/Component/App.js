@@ -8,16 +8,13 @@ function App() {
   const [Contacts, setContacts] = useState([]);
   const AddContactHandler = (contact) => {
     setContacts([...Contacts, contact]);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([...Contacts, contact]))
   };
 
   useEffect(() => {
     const retriveContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    setContacts(retriveContacts);
-  },[]);
-
-  useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(Contacts))
-  },[Contacts]);
+    setContacts(retriveContacts || []);
+  }, []);
 
 
 
